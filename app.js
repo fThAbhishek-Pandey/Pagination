@@ -4,10 +4,12 @@ import fetchFollowers from './component/fetchFollowers.js';
 import displayButtons from './component/displayButtons.js';
 
 const title = document.querySelector(".section-title h1");
+const loading_logo = document.querySelector(".logo");
 
 const btnContainer = document.querySelector(".btn-container");
 console.log("button containers : ",btnContainer);
 let index =0;
+
 let page =[];
 
 const setupUI = ()=>{
@@ -18,6 +20,7 @@ const setupUI = ()=>{
 const init = async ()=>{
       const followers = await fetchFollowers();
       title.textContent = "Pagination";
+      loading_logo.classList.add("hide");
       page= paginate(followers);
       setupUI();
 }
